@@ -1,0 +1,190 @@
+#-----------------------------------------------------------
+# Vivado v2022.2.2 (64-bit)
+# SW Build 3788238 on Tue Feb 21 20:00:34 MST 2023
+# IP Build 3783773 on Tue Feb 21 23:41:56 MST 2023
+# Start of session at: Sun Jun  4 13:04:11 2023
+# Process ID: 21056
+# Current directory: D:/Workspaces/Verilog/Pipelined
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2836 D:\Workspaces\Verilog\Pipelined\Pipelined.xpr
+# Log file: D:/Workspaces/Verilog/Pipelined/vivado.log
+# Journal file: D:/Workspaces/Verilog/Pipelined\vivado.jou
+# Running On: DESKTOP-LCCEBF0, OS: Windows, CPU Frequency: 2208 MHz, CPU Physical cores: 6, Host memory: 34142 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/Workspaces/Verilog/Pipelined/Pipelined.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {0 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 1 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 1 us
+run 5 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {1 0ns}
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+close_sim
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 2 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 2 us
+close_sim
