@@ -6,7 +6,7 @@ D:/Workspaces/ODTU/EE446/ee446_project/ALU.v,1683275448,verilog,,D:/Workspaces/O
 D:/Workspaces/ODTU/EE446/ee446_project/Adder.v,1681482608,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Constant.v,,Adder,,,,,,,,
 D:/Workspaces/ODTU/EE446/ee446_project/CPU.v,1685874247,verilog,,,,CPU,,,,,,,,
 D:/Workspaces/ODTU/EE446/ee446_project/Constant.v,1684508751,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Controller.v,,Constant0;Constant15;Constant4,,,,,,,,
-D:/Workspaces/ODTU/EE446/ee446_project/Controller.v,1686087704,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Datapath.v,,Controller,,,,,,,,
+D:/Workspaces/ODTU/EE446/ee446_project/Controller.v,1686246321,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Datapath.v,,Controller,,,,,,,,
 D:/Workspaces/ODTU/EE446/ee446_project/Datapath.v,1685874067,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Decoder_4to16.v,,Datapath,,,,,,,,
 D:/Workspaces/ODTU/EE446/ee446_project/Decoder_4to16.v,1681482608,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Extender.v,,Decoder_4to16,,,,,,,,
 D:/Workspaces/ODTU/EE446/ee446_project/Extender.v,1686087773,verilog,,D:/Workspaces/ODTU/EE446/ee446_project/Instruction_memory.v,,Extender,,,,,,,,

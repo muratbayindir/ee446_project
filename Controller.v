@@ -48,6 +48,8 @@ module Controller #(
 	output reg MemToRegW
 );
 	reg CondEx;
+	reg updateFlagsD, updateFlagsE;
+	reg flagN, flagZ, flagC, flagV;
 
 	parameter 	AND=4'b0000,
 				EXOR=4'b0001,
@@ -81,20 +83,29 @@ module Controller #(
 				BranchD <= 1'b0;
 
 				case(Funct[4:1])
-					CMD_ADD, CMD_SUB, CMD_AND, CMD_ORR, CMD_MOV: 
+					CMD_ADD, CMD_SUB, CMD_AND, CMD_ORR: 
 					begin
 						RegWriteD <= 1'b1;
 						ALUControlD <= Funct[4:1];
+						updateFlagsD <= 1'b1;
+					end
+					CMD_MOV:
+					begin
+						RegWriteD <= 1'b1;
+						ALUControlD <= Funct[4:1];
+						updateFlagsD <= 1'b0;
 					end
 					CMD_CMP:	
 					begin
 						RegWriteD <= 1'b0;
 						ALUControlD <= CMD_SUB;
+						updateFlagsD <= 1'b1;
 					end
 					default:	
 					begin
 						RegWriteD <= 1'b0;
 						ALUControlD <= Funct[4:1];
+						updateFlagsD <= 1'b0;
 					end
 				endcase
 
@@ -120,6 +131,7 @@ module Controller #(
 				ImmSrcD <= 1'b0;
 				RegSrcD[0] <= 1'b0;
 				RegSrcD[1] <= 1'b1;
+				updateFlagsD <= 1'b0;
 				
 				end
 
@@ -135,6 +147,7 @@ module Controller #(
 				ImmSrcD <= 1'b1;
 				RegSrcD[0] <= 1'b1;
 				RegSrcD[1] <= 1'b0;
+				updateFlagsD <= 1'b0;
 
 				ALUControlD <= Addition;
 				
@@ -161,7 +174,22 @@ module Controller #(
 		PCSrcM <= PCSrcE && BranchE && CondEx;
 		RegWriteM <= RegWriteE && CondEx;
 		MemWriteM <= MemWriteE && CondEx;
-		MemToRegM <= MemToRegE;
+		MemToRegM <= MemToRegE;		
+	end
+
+	always @(posedge clk) begin
+		updateFlagsE <= updateFlagsD;
+
+		if(updateFlagsD == 1'b1) begin
+			updateFlagsD <= 1'b0;
+		end
+
+		if(updateFlagsE == 1'b1) begin
+			flagN <= n;
+			flagZ <= z;
+			flagC <= c;
+			flagV <= v;
+		end
 	end
 
 	always @(posedge clk) begin
@@ -170,25 +198,25 @@ module Controller #(
 		MemToRegW <= MemToRegM;
 	end
 
-	always @(posedge clk) begin
+	always @(posedge clk) begin		
 		case (Cond)
-			4'b0000: CondEx <= z;                  // Equal / zero
-			4'b0001: CondEx <= ~z;                 // Not equal / non-zero
-			4'b1010: CondEx <= n;                  // Negative / less than
-			4'b1011: CondEx <= ~n;                 // Positive or zero / greater than or equal
-			4'b0010: CondEx <= c;                  // Unsigned higher or same / carry set
-			4'b0011: CondEx <= ~c;                 // Unsigned lower / carry clear
-			4'b0110: CondEx <= v;                  // Overflow
-			4'b0111: CondEx <= ~v;                 // No overflow
-			4'b1000: CondEx <= c & ~z;             // Unsigned higher
-			4'b1001: CondEx <= ~c | z;             // Unsigned lower or same
-			4'b0100: CondEx <= z | (n ^ v);        // Less than or equal
-			4'b0101: CondEx <= (n ^ v) & ~z;       // Greater than
-			4'b1100: CondEx <= n ^ v;              // Less than
-			4'b1101: CondEx <= ~(n ^ v);           // Greater than or equal
-			4'b1110: CondEx <= 1'b1;               // Always (AL)
+			4'b0000: CondEx = flagZ;                  // Equal / zero
+			4'b0001: CondEx = ~flagZ;                 // Not equal / non-zero
+			4'b1010: CondEx = flagN;                  // Negative / less than
+			4'b1011: CondEx = ~flagN;                 // Positive or zero / greater than or equal
+			4'b0010: CondEx = flagC;                  // Unsigned higher or same / carry set
+			4'b0011: CondEx = ~flagC;                 // Unsigned lower / carry clear
+			4'b0110: CondEx = flagV;                  // Overflow
+			4'b0111: CondEx = ~flagV;                 // No overflow
+			4'b1000: CondEx = flagC & ~flagZ;             // Unsigned higher
+			4'b1001: CondEx = ~flagC | flagZ;             // Unsigned lower or same
+			4'b0100: CondEx = flagZ | (flagN ^ flagV);        // Less than or equal
+			4'b0101: CondEx = (flagN ^ flagV) & ~flagZ;       // Greater than
+			4'b1100: CondEx = flagN ^ flagV;              // Less than
+			4'b1101: CondEx = ~(flagN ^ flagV);           // Greater than or equal
+			4'b1110: CondEx = 1'b1;               // Always (AL)
 			// 4'b1111 is typically not used (NV / Never execute)
-			default: CondEx <= 0;
+			default: CondEx = 0;
 		endcase
 	end
 
