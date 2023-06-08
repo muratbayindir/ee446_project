@@ -5,6 +5,6 @@ output [31:0] Q
 
 );
 
-assign Q = select ? {8'b0,A} : {24'b0,A[7:0]};
+assign Q = select ? {(A[23] ? 6'b111111 : 6'b0), A[23:0], 2'b00} : {24'b0, A[7:0]};
 
 endmodule

@@ -49,6 +49,19 @@ module Controller #(
 );
 	reg CondEx;
 
+	parameter 	AND=4'b0000,
+				EXOR=4'b0001,
+				SubtractionAB=4'b0010,
+				SubtractionBA=4'b0011,
+				Addition=4'b0100,
+				Addition_Carry=4'b0101,
+				SubtractionAB_Carry=4'b0110,
+				SubtractionBA_Carry=4'b0111,
+				ORR=4'b1100,
+				Move=4'b1101,
+				Bit_Clear=4'b1110,
+				Move_Not=4'b1111;
+
 	parameter CMD_ADD = 4'b0100,
 			  CMD_SUB = 4'b0010,
 			  CMD_AND = 4'b0000,
@@ -68,8 +81,21 @@ module Controller #(
 				BranchD <= 1'b0;
 
 				case(Funct[4:1])
-					CMD_ADD, CMD_SUB, CMD_AND, CMD_ORR, CMD_MOV:	RegWriteD <= 1'b1;
-					default:	RegWriteD <= 1'b0;
+					CMD_ADD, CMD_SUB, CMD_AND, CMD_ORR, CMD_MOV: 
+					begin
+						RegWriteD <= 1'b1;
+						ALUControlD <= Funct[4:1];
+					end
+					CMD_CMP:	
+					begin
+						RegWriteD <= 1'b0;
+						ALUControlD <= CMD_SUB;
+					end
+					default:	
+					begin
+						RegWriteD <= 1'b0;
+						ALUControlD <= Funct[4:1];
+					end
 				endcase
 
 				MemWriteD <= 1'b0;
@@ -109,14 +135,14 @@ module Controller #(
 				ImmSrcD <= 1'b1;
 				RegSrcD[0] <= 1'b1;
 				RegSrcD[1] <= 1'b0;
+
+				ALUControlD <= Addition;
 				
 				end
 
 			default:
 				PCSrcD <= 1'b0;
 		endcase
-
-		ALUControlD <= Funct[4:1];
 	end
 
 	always @(posedge clk) begin

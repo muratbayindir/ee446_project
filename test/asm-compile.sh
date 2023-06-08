@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Assemble the source file
-arm-none-eabi-as -o a1.o a1.s
+arm-none-eabi-as -march=armv4 -o a1.o a1.s
 
 # Disassemble the object file
 arm-none-eabi-objdump -d a1.o > disassembly.txt
 
 # Extract the hexadecimal opcodes
-awk '{print $2}' disassembly.txt | grep -v '^$' > opcodes.txt
+awk '{print $2}' disassembly.txt | grep -v '^$' | grep -E '^[[:xdigit:]]{8}$' > opcodes.txt
 
 # Reverse the byte order and convert to a hex array
 while read line; do
@@ -28,3 +28,6 @@ done
 
 # Print the hex array
 #cat hex_array.txt
+
+# copy file to sim folder
+cp -f hex_array.txt ../Pipelined.sim/sim_1/behav/xsim/imem_data.txt
