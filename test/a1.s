@@ -15,7 +15,7 @@ loop:
 	nop
 	nop
 	nop
-	ADDEQ R3, R3, #256
+	ADDEQ R3, R3, #324
 	nop
 	nop
 	nop

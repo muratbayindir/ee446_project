@@ -6,7 +6,7 @@ module Register_sync_rw #(
 	  output reg [WIDTH-1:0] OUT
     );
 	 
-always@(posedge clk) begin
+always@(negedge clk) begin
 	if (reset == 1'b1)
 		OUT<={WIDTH{1'b0}};
 	else if(we==1'b1)	

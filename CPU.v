@@ -7,12 +7,14 @@ module CPU(
 
     wire PCSrcD, BranchD, RegWriteD, MemWriteD, MemToRegD;
     wire [3:0] ALUControlD;
-    wire ALUSrcD, FlagWriteD, ImmSrcD;
+    wire ALUSrcD, FlagWriteD;
+	wire [1:0] ImmSrcD;
     wire [1:0] RegSrcD;
 
     wire PCSrcE, BranchE, RegWriteE, MemWriteE, MemToRegE;
     wire [3:0] ALUControlE;
-    wire ALUSrcE, FlagWriteE, ImmSrcE, CondE;
+    wire ALUSrcE, FlagWriteE, CondE;
+	wire [1:0] ImmSrcE;
 
     wire PCSrcM, RegWriteM, MemWriteM, MemToRegM;
 

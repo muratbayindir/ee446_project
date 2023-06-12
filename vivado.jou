@@ -2,10 +2,10 @@
 # Vivado v2022.2.2 (64-bit)
 # SW Build 3788238 on Tue Feb 21 20:00:34 MST 2023
 # IP Build 3783773 on Tue Feb 21 23:41:56 MST 2023
-# Start of session at: Sun Jun  4 15:15:10 2023
-# Process ID: 22444
+# Start of session at: Mon Jun 12 14:55:50 2023
+# Process ID: 24544
 # Current directory: D:/Workspaces/ODTU/EE446/ee446_project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21484 D:\Workspaces\ODTU\EE446\ee446_project\Pipelined.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24848 D:\Workspaces\ODTU\EE446\ee446_project\Pipelined.xpr
 # Log file: D:/Workspaces/ODTU/EE446/ee446_project/vivado.log
 # Journal file: D:/Workspaces/ODTU/EE446/ee446_project\vivado.jou
 # Running On: DESKTOP-LCCEBF0, OS: Windows, CPU Frequency: 2208 MHz, CPU Physical cores: 6, Host memory: 34142 MB
@@ -14,6 +14,37 @@ start_gui
 open_project D:/Workspaces/ODTU/EE446/ee446_project/Pipelined.xpr
 update_compile_order -fileset sources_1
 launch_simulation
+launch_simulation
 open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
 source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 1 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 5 us
+run 5 us
+run 5 us
+relaunch_sim
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 5 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 5 us
+save_wave_config {D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg}
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+launch_simulation
+launch_simulation
+open_wave_config D:/Workspaces/Verilog/Pipelined/CPU_behav.wcfg
+source CPU.tcl
+add_force {/CPU/reset} -radix hex {1 0ns}
+add_force {/CPU/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+run 5 us
+add_force {/CPU/reset} -radix hex {0 0ns}
+run 5 us
+run 5 us
+run 5 us
 close_sim

@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition"
-// CREATED		"Sun Jun  4 13:21:07 2023"
+// CREATED		"Mon Jun 12 15:41:23 2023"
 
 module Datapath(
 	clk,
@@ -25,8 +25,8 @@ module Datapath(
 	ALUSrc,
 	MemWrite,
 	MemToReg,
-	ImmSrc,
 	ALUControl,
+	ImmSrc,
 	RegSrc,
 	N,
 	Z,
@@ -47,8 +47,8 @@ input wire	RegWrite;
 input wire	ALUSrc;
 input wire	MemWrite;
 input wire	MemToReg;
-input wire	ImmSrc;
 input wire	[3:0] ALUControl;
+input wire	[1:0] ImmSrc;
 input wire	[1:0] RegSrc;
 output wire	N;
 output wire	Z;
@@ -131,8 +131,8 @@ DP_WB	b2v_inst13(
 
 
 Extender	b2v_inst14(
-	.select(ImmSrc),
 	.A(SYNTHESIZED_WIRE_6),
+	.select(ImmSrc),
 	.Q(SYNTHESIZED_WIRE_20));
 
 

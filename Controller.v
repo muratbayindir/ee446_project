@@ -21,7 +21,7 @@ module Controller #(
 	output reg [3:0] ALUControlD,
 	output reg ALUSrcD,
 	output reg FlagWriteD,
-	output reg ImmSrcD,
+	output reg [1:0] ImmSrcD,
 	output reg [1:0] RegSrcD,
 
 	/* Execute */
@@ -33,7 +33,7 @@ module Controller #(
 	output reg [3:0] ALUControlE,
 	output reg ALUSrcE,
 	output reg FlagWriteE,
-	output reg ImmSrcE,
+	output reg [1:0] ImmSrcE,
 	output reg CondE,
 
 	/* Memory */
@@ -113,7 +113,7 @@ module Controller #(
 				MemToRegD <= 1'b0;
 				ALUSrcD <= Funct[5];
 				FlagWriteD <= 1'b0;
-				ImmSrcD <= 1'b0;
+				ImmSrcD <= 2'b01;
 				RegSrcD[0] <= 1'b0;
 				RegSrcD[1] <= 1'b0;
 				
@@ -128,7 +128,7 @@ module Controller #(
 				MemWriteD <= ~Funct[0]; // STR
 				MemToRegD <= Funct[0]; // LDR
 				ALUSrcD <= ~Funct[5];
-				ImmSrcD <= 1'b0;
+				ImmSrcD <= 2'b00;
 				RegSrcD[0] <= 1'b0;
 				RegSrcD[1] <= 1'b1;
 				updateFlagsD <= 1'b0;
@@ -144,7 +144,7 @@ module Controller #(
 				MemWriteD <= 1'b0;
 				MemToRegD <= 1'b0;
 				ALUSrcD <= 1'b1;
-				ImmSrcD <= 1'b1;
+				ImmSrcD <= 2'b10;
 				RegSrcD[0] <= 1'b1;
 				RegSrcD[1] <= 1'b0;
 				updateFlagsD <= 1'b0;

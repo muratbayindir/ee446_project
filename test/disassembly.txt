@@ -22,7 +22,7 @@ Disassembly of section .text:
   30:	e1a00000 	nop			; (mov r0, r0)
   34:	e1a00000 	nop			; (mov r0, r0)
   38:	e1a00000 	nop			; (mov r0, r0)
-  3c:	02833c01 	addeq	r3, r3, #256	; 0x100
+  3c:	02833f51 	addeq	r3, r3, #324	; 0x144
   40:	e1a00000 	nop			; (mov r0, r0)
   44:	e1a00000 	nop			; (mov r0, r0)
   48:	e1a00000 	nop			; (mov r0, r0)
